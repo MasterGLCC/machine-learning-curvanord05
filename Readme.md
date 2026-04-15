@@ -1,69 +1,42 @@
- Régression Linéaire, Multiple et Polynomiale
- 
-> Projet Machine Learning — Implémentation From Scratch & avec Bibliothèques
- 
+#  Projet : Régression Linéaire, Multiple, Polynomiale & Logistique
 
- 
-## Description
- 
-Ce projet implémente trois types de régression en Python :
- 
-- **Régression Linéaire Simple** — prédire une valeur à partir d'une seule variable
-- **Régression Linéaire Multiple** — prédire une valeur à partir de plusieurs variables
-- **Régression Polynomiale** — modéliser des relations non-linéaires avec des courbes
- 
-Chaque modèle est développé de **deux façons** :
-1. **From Scratch** — implémentation manuelle avec NumPy (équation normale)
-2. **Avec Scikit-Learn** — utilisation de la bibliothèque officielle
- 
- ## Concepts utilisés
- 
-| Modèle | Méthode | Description |
-|--------|---------|-------------|
-| Linéaire Simple | Équation normale `θ = (XᵀX)⁻¹Xᵀy` | 1 variable → 1 droite |
-| Linéaire Multiple | Même équation étendue | N variables → hyperplan |
-| Polynomiale | Transformation `X → [X, X², X³]` + régression linéaire | 1 variable → courbe |
- 
 ---
- 
-## Métriques d'évaluation
- 
-- **RMSE** *(Root Mean Squared Error)* — erreur moyenne de prédiction (plus bas = mieux)
-- **R²** *(Coefficient de détermination)* — proportion de variance expliquée (plus proche de 1 = mieux)
- 
+
+##  Objectif
+Implémenter et comparer 4 modèles de Machine Learning :
+1. Régression Linéaire Simple
+2. Régression Linéaire Multiple
+3. Régression Polynomiale (degré 2)
+4. Régression Logistique (classification binaire)
+
+Chaque modèle est codé deux fois :
+- From Scratch : Implémentation manuelle des formules mathématiques
+- Bibliothèque : Utilisation de `scikit-learn` pour validation
+
 ---
- 
-## Bibliothèques requises
- 
-```bash
-pip install numpy matplotlib scikit-learn
-```
- 
+
+##  Dataset & Contraintes
+Conformément aux consignes du projet :
+- Petite dataset manuelle : Définition explicite de `X` et `y` dans le code (10 à 8 échantillons)
+
 ---
- 
-## Exécution
- 
-```bash
-python regression.py
-```
- 
-Le script affiche les métriques dans la console et génère un graphique comparatif des modèles.
- 
----
- 
-## Résultats attendus
- 
-```
-🔹 1. RÉGRESSION LINÉAIRE SIMPLE (1 feature)
-  Linéaire (From Scratch)             | RMSE: ...  | R²: ...
-  Linéaire (Scikit-Learn)             | RMSE: ...  | R²: ...
- 
-🔹 2. RÉGRESSION MULTIPLE (3 features)
-  Multiple (From Scratch)             | RMSE: ...  | R²: ...
-  Multiple (Scikit-Learn)             | RMSE: ...  | R²: ...
- 
-🔹 3. RÉGRESSION POLYNOMIALE (Degré 3)
-  Polynomiale D3 (From Scratch)       | RMSE: ...  | R²: ...
-  Polynomiale D3 (Scikit-Learn)       | RMSE: ...  | R²: ...
+
+## Méthodologie
+
+### 1. Régression Linéaire & Multiple (From Scratch)
+- Formule : Équation normale `θ = (XᵀX)⁻¹Xᵀy`
+- Implémentation : `np.linalg.pinv()` pour une inversion matricielle stable
+- Multiple : Même formule, seule la dimension de `X` change (2 colonnes au lieu d'1)
+
+### 2. Régression Polynomiale
+- Principe : Transformation non-linéaire `X → [X, X², X³...]` suivie d'une régression linéaire
+- From Scratch: Génération manuelle des puissances via `np.column_stack()`
+- Bibliothèque : `PolynomialFeatures` + `LinearRegression`
+
+### 3. Régression Logistique
+- Fonction : Sigmoïde `σ(z) = 1 / (1 + e⁻ᶻ)` pour mapper les sorties vers [0,1]
+- Optimisation : Descente de gradient manuelle (mise à jour des poids et biais)
+- Seuil de décision: `0.5` pour convertir les probabilités en classes `0` ou `1`
+
 
 
