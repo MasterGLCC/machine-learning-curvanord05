@@ -1,5 +1,7 @@
 #  Projet : Régression Linéaire, Multiple, Polynomiale & Logistique
 
+**Auteur :** Ismail Erguig 
+
 ---
 
 ##  Objectif
