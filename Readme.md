@@ -8,8 +8,12 @@
 Implémenter et comparer 4 modèles de Machine Learning :
 1. Régression Linéaire Simple
 2. Régression Linéaire Multiple
-3. Régression Polynomiale (degré 2)
+3. Régression polynomiale (degré 2)
 4. Régression Logistique (classification binaire)
+
+### Classification :
+5. KNN - K-Nearest Neighbors (k=3)
+6. SVM - Support Vector Machine (noyau linéaire)
 
 Chaque modèle est codé deux fois :
 - From Scratch : Implémentation manuelle des formules mathématiques
