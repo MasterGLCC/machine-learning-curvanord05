@@ -14,7 +14,7 @@ import warnings                                                  # Importe le mo
 warnings.filterwarnings('ignore')                                # Désactive les warnings pour garder la console propre
 
 # =============================================================================
-# 📊 DÉFINITION DE LA DATASET MANUELLE (Cohérente avec le projet)
+# DÉFINITION DE LA DATASET MANUELLE (Cohérente avec le projet)
 # =============================================================================
 # Dataset : 2 features (ex: heures d'étude, exercices) → Note finale
 X_xgb = np.array([[1.0, 2.1], [2.0, 3.0], [3.0, 1.5], [4.0, 4.2], [5.0, 2.8],   # Crée matrice 10x2 de features brutes
@@ -23,7 +23,7 @@ y_xgb = np.array([15.2, 28.1, 22.5, 41.0, 35.8,                                 
                   58.2, 52.1, 75.0, 68.4, 92.1], dtype=float)                    # 10 valeurs réelles correspondantes
 
 # =============================================================================
-# ⚙️ CONFIGURATION & ENTRAÎNEMENT DU MODÈLE
+# CONFIGURATION & ENTRAÎNEMENT DU MODÈLE
 # =============================================================================
 # Dictionnaire des hyperparamètres XGBoost
 params = {
@@ -42,7 +42,7 @@ model = xgb.XGBRegressor(**params)          # Crée l'objet modèle prêt pour l
 model.fit(X_xgb, y_xgb, eval_set=[(X_xgb, y_xgb)], verbose=False) # Fit + tracking loss pour courbe d'apprentissage
 
 # =============================================================================
-# 🔮 PRÉDICTIONS & MÉTRIQUES
+# PRÉDICTIONS & MÉTRIQUES
 # =============================================================================
 y_pred = model.predict(X_xgb)               # Génère les prédictions sur les données d'entraînement
 
@@ -61,7 +61,7 @@ print(f"  MAE  : {mae:.4f}")                                  # Affiche MAE avec
 print("="*70)                                                # Fermeture visuelle                                               # Fermeture visuelle
 
 # =============================================================================
-# 📈 VISUALISATIONS PÉDAGOGIQUES (4 Graphiques)
+# VISUALISATIONS PÉDAGOGIQUES (4 Graphiques)
 # =============================================================================
 
 # --- Graphique 1 : Courbe d'apprentissage (Loss vs Itérations) ---
@@ -113,4 +113,4 @@ plt.grid(True, alpha=0.2, axis='x')                         # Grille verticale d
 plt.tight_layout()                                          # Ajuste
 plt.show()                                                  # Affiche graphique 4
 
-print("\n✅ Exécution XGBoost terminée. 4 graphiques générés avec succès.") # Message fin console
+print("\n Exécution XGBoost terminée. 4 graphiques générés avec succès.") # Message fin console
