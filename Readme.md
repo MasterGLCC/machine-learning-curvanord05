@@ -28,21 +28,128 @@ Conformément aux consignes du projet :
 ---
 
 ## Méthodologie
+File: regression.py (six algorithms)
 
-### 1. Régression Linéaire & Multiple (From Scratch)
-- Formule : Équation normale `θ = (XᵀX)⁻¹Xᵀy`
-- Implémentation : `np.linalg.pinv()` pour une inversion matricielle stable
-- Multiple : Même formule, seule la dimension de `X` change (2 colonnes au lieu d'1)
+* Type : Régression supervisée
+* Implémentation : Équation normale θ = (XᵀX)⁻¹Xᵀ (from scratch)y
+* Méthode : Pseudo-inverse pour stabilité numérique
+* Visualisations : Courbe de prédiction, résidus, réel vs prédit
 
-### 2. Régression Polynomiale
-- Principe : Transformation non-linéaire `X → [X, X², X³...]` suivie d'une régression linéaire
-- From Scratch: Génération manuelle des puissances via `np.column_stack()`
-- Bibliothèque : `PolynomialFeatures` + `LinearRegression`
+2. Régression Polynomiale (Degré 2)
 
-### 3. Régression Logistique
-- Fonction : Sigmoïde `σ(z) = 1 / (1 + e⁻ᶻ)` pour mapper les sorties vers [0,1]
-- Optimisation : Descente de gradient manuelle (mise à jour des poids et biais)
-- Seuil de décision: `0.5` pour convertir les probabilités en classes `0` ou `1`
+* Type : Régression non-linéaire
+* Principe : Transformation X → [X, X²] + régression linéaire
+* From Scratch: Génération manuelle des features polynomiales
+* Visualisations : Comparaison linéaire vs polynomial
 
+3. Régression Logistique
+
+* Type : Classification binaire
+* From Scratch : descente de gradient + fonction sigmoïde
+* Optimisation : Mise à jour itérative des poids
+* Visualisations : Frontière de décision, courbe d'apprentissage
+
+4. KNN (K-Nearest Neighbors)
+
+* Type : Classification par voisins
+* From Scratch : Distance euclidienne + vote majoritaire
+* Paramètre : k = 3 voisins
+* Visualisations : Frontière de décision, accuracy vs k
+
+5. SVM (Support Vector Machine)
+
+* Type : Classification à marges maximales
+* From Scratch : Descente de gradient sur Hinge Loss
+* Noyau : Linéaire
+* Visualisations : Frontière SVM, convergence de la loss
+
+---
+
+ Fichier : xgboost_modele.py
+
+6. XGBoost (eXtreme Gradient Boosting)
+
+* Type : Régression par arbres boostés
+* Méthode : Application de la bibliothèque XGBoost, qui construit séquentiellement 100 arbres à faible profondeur (max=3) afin d’améliorer la précision des prédictions.
+* Visualisations :
+  * Courbe de convergence (RMSE vs itérations)
+  * Réel vs prédit
+  * Analyse des résidus
+  * Importance des variables
+
+---
+
+ Fichier : dbscan_modele.py
+
+7. DBSCAN (Density-Based Spatial Clustering)
+
+* Type : Clustering non supervisé basé sur la densité
+* Avantages :
+  * Détecte automatiquement le nombre de clusters
+  * Gère les formes arbitraires (non convexes)
+  * Identifie les outliers
+* Paramètres : eps=0.3, min_samples=5
+* Visualisations :
+  * Clustering sur 3 datasets (lunes, cercles, custom)
+  * Comparaison des scores Silhouette
+  * Sensibilité à epsilon
+  * Vue 3D
+
+---
+
+ Fichier : naive_bayes_modele.py
+
+8. Naive Bayes Gaussian
+
+* Type: Classification probabiliste
+* From Scratch : Théorème de Bayes + hypothèse d'indépendance
+* Principe : Estimation des densités gaussiennes par classe
+* Visualisations :
+  * Densités de probabilité apprises
+  * Frontières de décision (Scratch vs Sklearn)
+  * Matrices de confusion comparatives
+
+---
+
+Fichier : qlearning_modele.py
+
+9. Q-Learning (Reinforcement Learning)
+
+* Type : Apprentissage par renforcement
+* Environnement : Grid World 5×5 (départ → objectif + pièges)
+* From Scratch :
+  * Q-Table initialisée à zéro
+  * Équation de Bellman pour mise à jour
+  * Stratégie ε-greedy avec decay
+* Visualisations :
+  * Courbe d'apprentissage (récompenses)
+  * Décroissance de l'exploration (ε)
+  * Longueur des épisodes
+  * Heatmap de la Q-Table finale
+  * Chemin optimal appris
+
+---
+
+Fichier : pca_modele.py
+
+10. PCA (Principal Component Analysis)
+
+* Type : Réduction de dimension non supervisée
+* From Scratch :
+  * Centrage des données
+  * Matrice de covariance
+  * Décomposition en valeurs/vecteurs propres
+  * Projection sur composantes principales
+* Objectif : 2D → 1D avec variance maximale
+* Visualisations :
+  * Données originales + direction PC1
+  * Projections orthogonales
+  * Variance expliquée
+
+
+
+* Comprendre le fonctionnement interne
+* Visualiser les frontières de décision
+* Analyser la convergence et les erreurs
 
 
